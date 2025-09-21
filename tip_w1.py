@@ -102,7 +102,7 @@ def tiggerfy(word):
     new_str = []
 
     for i in range(0, len(word)):
-        curr_char = word[i].lower() # ??
+        curr_char = word[i].lower() # lowercase 
         if (curr_char == 't'):
             continue
         elif (curr_char == 'i'):
@@ -111,23 +111,23 @@ def tiggerfy(word):
         # Check er
         elif (curr_char == 'r'):
             if (len(new_str) == 0):
-                new_str.append(curr_char)
+                new_str.append(word[i])
             else:
                 if (new_str[len(new_str) - 1] == 'e'):
                     new_str.pop()
                 else:
-                    new_str.append(curr_char)
+                    new_str.append(word[i])
         # Check gg
         elif (curr_char == 'g'):
             if (len(new_str) == 0):
-                new_str.append(curr_char)
+                new_str.append(word[i])
             else:
                 if (new_str[len(new_str) - 1] == 'g'):
                     new_str.pop()
                 else:
-                    new_str.append(curr_char)
+                    new_str.append(word[i])
         else:
-            new_str.append(curr_char)
+            new_str.append(word[i])
 
     return "".join(new_str)
 
@@ -137,13 +137,24 @@ print(tiggerfy("Choir"))
 
 
 """
+run 1
 Tr
 eplan
 Chor
+
+run 2
+r
+eplan
+chor
 """
+
+# hype YUPPP
+# see yall next class!
 
 # Forgot about capital letters :( -> currChar.toLower() ?
 # -> like T vs t >:(
 # nice to work with you!!!
 # thank you guys. it was a fu
 # Yes it was !!
+
+# Dueces
