@@ -39,9 +39,11 @@ def arrange_guest_arrival_order(arrival_pattern):
 
     #Loop through our arrival pattern
     for i in range(2, len(arrival_pattern) + 2):
+        #print('stack at i', i, stack)
         if arrival_pattern[i - 2] == "I":
             while stack:
                 result.append(stack.pop())
+                #print('result', result)
         stack.append(str(i))
         
     #Final stack emptying
@@ -72,8 +74,19 @@ to largest registration number.
 
 
 [17,13,11,2,3,5,7]
-[2, 3, 5, 7, 11, 13, 17] # RAHHHHHHHHHHHHH lmao i will continue this somehow
+[2, 3, 5, 7, 11, 13, 17] 
 
+fill queue starting from second to last back of sorted list until half way, then add max elem to queue
+make remaining list into another queue
+
+make final list
+for x in range(len(attendess) // 2):
+    if lesserQue:
+        finalist.append(lesserQue.popLeft)
+    if greaterque:
+        finallist.append(greqterquq.popleft)
+        
+return final list
 
 
 sort the input then simulate the process in reverse
@@ -81,7 +94,7 @@ sort the input then simulate the process in reverse
 2. append next max to the end of the queue
 3.
 
-
+2 3 5 7 11 13 17
 [1, 1000, 50]
 sorted = [1, 50, 100]
           l       r
@@ -89,3 +102,24 @@ queue = [1]
 queue = []
 
 '''
+from collections import deque
+def reveal_attendee_list_in_order(attendees):
+    attendees.sort() # sort low to high
+    n = len(attendees) // 2 # get halfway point
+    lesser = deque(attendees[:n]) # get up to halfway (exclusive)
+    greater = deque(attendees[len(attendees) - 2:n-1 :-1]) # start from 2nd to last max, end with halfway
+    greater.append(attendees[-1]) # add max to end of queue -> last to pop
+    
+    finalList = []
+    # print('l', lesser, 'g', greater)
+    finalLen = max(len(lesser), len(greater))
+    for x in range(finalLen):
+        if lesser:
+            finalList.append(lesser.popleft())
+        if greater:
+            finalList.append(greater.popleft())
+        
+    return finalList
+    
+print(reveal_attendee_list_in_order([17,13,11,2,3,5,7])) 
+print(reveal_attendee_list_in_order([1,1000])) 
